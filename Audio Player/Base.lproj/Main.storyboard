@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14101" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,79 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Audio_Player" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-Wo-bmQ">
+                                <rect key="frame" x="172.5" y="50" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4C8-jn-5UW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxW-nB-dMp">
+                                <rect key="frame" x="166.5" y="104" width="42" height="30"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xb8-TN-iij"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-BA-f2P">
+                                <rect key="frame" x="158.5" y="169" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-wp-us8">
+                                <rect key="frame" x="41" y="198" width="292" height="31"/>
+                                <connections>
+                                    <action selector="volumeUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="HiV-Nh-Qlr"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndq-7y-HWi">
+                                <rect key="frame" x="125.5" y="262" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZCJ-y4-Xgs">
+                                <rect key="frame" x="41" y="291" width="292" height="31"/>
+                                <connections>
+                                    <action selector="positionSliderUpdated:" destination="BYZ-38-t0r" eventType="valueChanged" id="5mA-Ju-cjK"/>
+                                </connections>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sVQ-wp-us8" secondAttribute="trailing" constant="44" id="04E-JT-CG9"/>
+                            <constraint firstItem="MkX-Wo-bmQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="05h-IM-4QI"/>
+                            <constraint firstItem="iJR-BA-f2P" firstAttribute="top" secondItem="yxW-nB-dMp" secondAttribute="bottom" constant="35" id="3Gi-uK-cfQ"/>
+                            <constraint firstItem="ZCJ-y4-Xgs" firstAttribute="top" secondItem="ndq-7y-HWi" secondAttribute="bottom" constant="8" id="5ef-IP-JAJ"/>
+                            <constraint firstItem="sVQ-wp-us8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="88C-yD-3g8"/>
+                            <constraint firstItem="iJR-BA-f2P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Nx-zC-GFq"/>
+                            <constraint firstItem="ZCJ-y4-Xgs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="97d-vH-f3c"/>
+                            <constraint firstItem="sVQ-wp-us8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dhz-1r-w9s"/>
+                            <constraint firstItem="yxW-nB-dMp" firstAttribute="top" secondItem="MkX-Wo-bmQ" secondAttribute="bottom" constant="24" id="KB4-zM-mg2"/>
+                            <constraint firstItem="ZCJ-y4-Xgs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="Ndc-Gg-Fvk"/>
+                            <constraint firstItem="ndq-7y-HWi" firstAttribute="top" secondItem="sVQ-wp-us8" secondAttribute="bottom" constant="34" id="TFV-Bo-tRH"/>
+                            <constraint firstItem="ndq-7y-HWi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cwN-Hd-7Sm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZCJ-y4-Xgs" secondAttribute="trailing" constant="44" id="e13-uU-2g6"/>
+                            <constraint firstItem="sVQ-wp-us8" firstAttribute="top" secondItem="iJR-BA-f2P" secondAttribute="bottom" constant="8" id="eKX-er-LeH"/>
+                            <constraint firstItem="MkX-Wo-bmQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="eMd-eN-HCY"/>
+                            <constraint firstItem="yxW-nB-dMp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fwF-8X-x3h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="positionSlider" destination="ZCJ-y4-Xgs" id="k30-0d-27v"/>
+                        <outlet property="slider" destination="sVQ-wp-us8" id="3eq-nV-TGK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
